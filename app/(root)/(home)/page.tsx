@@ -1,19 +1,26 @@
+'use client'
 import MeetingTypeList from '@/components/ui/MeetingTypeList';
-import React from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react'
 
 const Home = () => {
   // get the local time and date in human readeble formate
   const now = new Date();
-
+  const router = useRouter();
   const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   const date = (new Intl.DateTimeFormat('en-US', { dateStyle: 'full' })).format(now);
+
+  useEffect(()=>{
+    router.refresh()
+  },[])
+  
   return (
     <section className='flex size-full flex-col gap-10 text-white'>
       <div className='h-[300px] w-full rounded-[20px] bg-hero bg-cover'>
         {/* home page top main long width image*/}
         <div className='flex h-full flex-col justify-between max-md:px-5 max-md:py-8 lg:p-11'>
           {/* upcoming meeting time display */}
-          <h2 className='glassmorphism max-w-[270px] rounded py-2 text-center text-base font-normal'>Upcoming Meeting at: 12:30 PM</h2>
+          {/* <h2 className='glassmorphism max-w-[270px] rounded py-2 text-center text-base font-normal'>Upcoming Meeting at: 12:30 PM</h2> */}
           <div className='flex flex-col gap-2'>
             {/* current date and time display */}
             <h1 className='text-4xl font-extrabold lg:text-7xl'>
@@ -25,7 +32,7 @@ const Home = () => {
       </div>
 
       {/* the meeting option component */}
-      <MeetingTypeList/>
+      <MeetingTypeList />
     </section>
   )
 }

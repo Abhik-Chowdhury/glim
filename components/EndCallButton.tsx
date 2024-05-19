@@ -19,6 +19,8 @@ const EndCallButton = () => {
     return (
     <Button onClick={async ()=> {
         await call.endCall();
+        call?.camera.disable
+        call?.microphone.disable
         router.push('/')
     }} className='bg-red-500'>
         End Call for Everyone

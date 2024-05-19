@@ -83,7 +83,10 @@
   color: white;
 }
 
-
+/* =============================== next js Toast*/
+.nextjs-toast-errors-parent{
+  visibility: hidden;
+}
 
 /* =============================== */
 

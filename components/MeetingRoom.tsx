@@ -5,7 +5,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
@@ -31,6 +30,7 @@ const MeetingRoom = () => {
   const callingState = useCallCallingState();
   // router 
   const router = useRouter();
+
   if(callingState !== CallingState.JOINED) return <Loader/>
   // the layout implement function
   const CallLayout = () => {
@@ -58,7 +58,9 @@ const MeetingRoom = () => {
 
       <div className='fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap'>
         {/* the video call controlled */}
-        <CallControls onLeave={()=>router.push('/')}/>
+        <CallControls onLeave={()=>{ 
+          router.push('/')
+          }}/>
         {/* the layout change Drop Down menu */}
         <DropdownMenu>
           <div className='flex items-center'>
